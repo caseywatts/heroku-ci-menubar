@@ -1,0 +1,5 @@
+{
+  "name"    : "heroku-ci-menubar",
+  "version" : "0.0.1",
+  "main"    : "main.js"
+}
