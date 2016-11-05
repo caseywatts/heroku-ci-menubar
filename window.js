@@ -1,7 +1,12 @@
 var path = require('path');
+const { shell } = require('electron')
 
 function notifyTestResult() {
-  new Notification('Test Passed', { body: "ohh yes it passed" });
+  const notification = new Notification('Test Passed', { body: "ohh yes it passed" });
+  notification.onclick = function() {
+    shell.openExternal('http://www.heroku.com');
+  }
 }
 
-// setInterval(notifyTestResult, 10000); // every 3 seconds
+notifyTestResult();
+// setInterval(notifyTestResult, 3000); // every 3 seconds
