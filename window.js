@@ -6,6 +6,7 @@ function notifyTestResult() {
   notification.onclick = function() {
     shell.openExternal('http://www.heroku.com');
   }
+  setTimeout(notification.close.bind(notification), 5000); // close after 5 seconds
 }
 
 notifyTestResult();
