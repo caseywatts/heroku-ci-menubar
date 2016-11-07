@@ -5,7 +5,8 @@
   "dependencies": {
     "electron-debug": "^1.1.0",
     "electron-positioner": "^3.0.0",
-    "mustache": "^2.2.1"
+    "mustache": "^2.2.1",
+    "socketio": "^1.0.0"
   },
   "devDependencies": {
     "devtron": "^1.4.0"
