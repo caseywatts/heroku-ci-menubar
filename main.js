@@ -17,7 +17,7 @@ app.on('ready', function(){
 
 
   // Tray setup
-  tray = new Tray(iconPath);
+  tray = new Tray(iconPath('default'));
   const positioner = new Positioner(win);
   positioner.move('trayCenter', tray.getBounds());
 
@@ -25,20 +25,31 @@ app.on('ready', function(){
     win.isVisible() ? win.hide() : win.show()
   })
   tray.setToolTip('Heroku CI Menubar');
-  function setTrayIcon(someData) {
-    tray.setImage(iconPath);
-    tray.setPressedImage(iconPath);
+  function setTrayIcon(state) {
+    tray.setImage(iconPath(state));
+    tray.setPressedImage(iconPath(state));
+  }
+
+  function iconPath(state) {
+    const iconForStatus = {
+      'default': path.join(__dirname, 'icons/MenubarStateIcons/IconDefault.png'),
+      'error': path.join(__dirname, 'icons/MenubarStateIcons/IconError.png'),
+      'fail': path.join(__dirname, 'icons/MenubarStateIcons/IconFail.png'),
+      'pass': path.join(__dirname, 'icons/MenubarStateIcons/IconPass.png'),
+      'progress': path.join(__dirname, 'icons/MenubarStateIcons/IconProgress.png')
+    };
+    return iconForStatus[state];
   }
 
   // Data Message Sending
   const someData = {
-    state: 'passed',
+    state: 'pass',
     buildNumber: 1,
     url: 'http://www.heroku.com'
   };
   function dispatchEventForSomeData(someData) {
     win.webContents.send('someDataHasArrived', someData);
-    setTrayIcon(someData);
+    setTrayIcon(someData.state);
   }
   setTimeout(dispatchEventForSomeData, 1000, someData);
 
