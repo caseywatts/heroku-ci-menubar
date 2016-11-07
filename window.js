@@ -1,5 +1,5 @@
 var path = require('path');
-const { shell } = require('electron');
+const { shell, ipcRenderer } = require('electron');
 const Mustache = require('mustache');
 
 function notifyTestResult(someData) {
@@ -21,23 +21,8 @@ function renderBuildTemplate(someData) {
   document.getElementById('content').innerHTML = rendered;
 }
 
-
-function dispatchEventForSomeData(someData) {
-  document.dispatchEvent(new CustomEvent('someDataHasArrived', {detail: someData}));
-}
-
-document.addEventListener('someDataHasArrived', function (e) {
-  renderBuildTemplate(e.detail);
-  notifyTestResult(e.detail);
+ipcRenderer.on('someDataHasArrived', (event, message) => {
+  renderBuildTemplate(message.detail);
+  notifyTestResult(message.detail);
   // change Icon
 }, false);
-
-document.addEventListener("DOMContentLoaded", function(event) {
-  const someData = {
-    state: 'passed',
-    buildNumber: 1,
-    url: 'http://www.heroku.com'
-  };
-
-  setTimeout(dispatchEventForSomeData, 1000, someData);
-});

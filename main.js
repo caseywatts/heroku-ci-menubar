@@ -20,4 +20,12 @@ app.on('ready', function(){
     win.isVisible() ? win.hide() : win.show()
   })
   tray.setToolTip('Heroku CI Menubar');
+
+  const someData = {
+    state: 'passed',
+    buildNumber: 1,
+    url: 'http://www.heroku.com'
+  };
+  function dispatchEventForSomeData(someData) { win.webContents.send('someDataHasArrived', {detail: someData});}
+  setTimeout(dispatchEventForSomeData, 1000, someData);
 });
