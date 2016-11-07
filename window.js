@@ -3,7 +3,7 @@ const { shell, ipcRenderer } = require('electron');
 const Mustache = require('mustache');
 
 function notifyTestResult(someData) {
-  const notification = new Notification(`Build ${someData.buildNumber} ${someData.state}`, { body: "oh my" });
+  const notification = new Notification(`Build ${someData.number} ${someData.status}`, { body: "oh my" });
   notification.onclick = function() {
     shell.openExternal(someData.url);
   }
@@ -12,9 +12,9 @@ function notifyTestResult(someData) {
 
 function renderBuildTemplate(someData) {
   const buildTemplate = `
-  This build number {{ buildNumber }}
+  This build number {{ number }}
   <br />
-  {{ state }}!
+  {{ status }}!
   `;
   Mustache.parse(buildTemplate);   // optional, speeds up future uses
   var rendered = Mustache.render(buildTemplate, someData);
