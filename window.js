@@ -13,14 +13,18 @@ function notifyTestResult() {
 notifyTestResult();
 // setInterval(notifyTestResult, 3000); // every 3 seconds
 
-function loadUser() {
+function renderBuildTemplate(someData) {
   var template = document.getElementById('template').innerHTML;
   Mustache.parse(template);   // optional, speeds up future uses
-  var rendered = Mustache.render(template, {name: "Luke"});
+  var rendered = Mustache.render(template, someData);
   document.getElementById('target').innerHTML = rendered;
   console.log(rendered);
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  loadUser();
+  const someData = {
+    state: 'passed',
+    buildNumber: 1
+  };
+  renderBuildTemplate(someData);
 });
