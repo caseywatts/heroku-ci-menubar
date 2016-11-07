@@ -8,10 +8,13 @@ let tray = null;
 let win = null;
 
 app.on('ready', function(){
+  // Window Setup
   win = new BrowserWindow({show: true});
   // win = new BrowserWindow({width: 400, height: 300, frame: false, show: false});
   win.loadURL('file://' + __dirname + '/window.html');
 
+
+  // Tray setup
   tray = new Tray(iconPath);
   const positioner = new Positioner(win);
   positioner.move('trayCenter', tray.getBounds());
@@ -21,6 +24,8 @@ app.on('ready', function(){
   })
   tray.setToolTip('Heroku CI Menubar');
 
+
+  // Data Message Sending
   const someData = {
     state: 'passed',
     buildNumber: 1,
