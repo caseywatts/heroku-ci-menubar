@@ -21,8 +21,8 @@ function renderBuildTemplate(someData) {
   document.getElementById('content').innerHTML = rendered;
 }
 
-ipcRenderer.on('someDataHasArrived', (event, message) => {
-  renderBuildTemplate(message.detail);
-  notifyTestResult(message.detail);
+ipcRenderer.on('someDataHasArrived', (event, someData) => {
+  renderBuildTemplate(someData);
+  notifyTestResult(someData);
   // change Icon
 }, false);

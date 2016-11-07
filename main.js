@@ -26,6 +26,8 @@ app.on('ready', function(){
     buildNumber: 1,
     url: 'http://www.heroku.com'
   };
-  function dispatchEventForSomeData(someData) { win.webContents.send('someDataHasArrived', {detail: someData});}
+  function dispatchEventForSomeData(someData) {
+    win.webContents.send('someDataHasArrived', someData);
+  }
   setTimeout(dispatchEventForSomeData, 1000, someData);
 });
