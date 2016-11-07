@@ -23,7 +23,10 @@ app.on('ready', function(){
     win.isVisible() ? win.hide() : win.show()
   })
   tray.setToolTip('Heroku CI Menubar');
-
+  function setTrayIcon(someData) {
+    tray.setImage(iconPath);
+    tray.setPressedImage(iconPath);
+  }
 
   // Data Message Sending
   const someData = {
@@ -33,6 +36,7 @@ app.on('ready', function(){
   };
   function dispatchEventForSomeData(someData) {
     win.webContents.send('someDataHasArrived', someData);
+    setTrayIcon(someData);
   }
   setTimeout(dispatchEventForSomeData, 1000, someData);
 });
