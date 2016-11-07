@@ -24,5 +24,4 @@ function renderBuildTemplate(someData) {
 ipcRenderer.on('someDataHasArrived', (event, someData) => {
   renderBuildTemplate(someData);
   notifyTestResult(someData);
-  // change Icon
 }, false);
