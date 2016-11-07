@@ -4,6 +4,10 @@ Install electron executable:
 
 `npm install -g electron-prebuilt`
 
-To run the app:
+Install dependencies
+
+`npm install`
+
+Run the app:
 
 `electron .`
