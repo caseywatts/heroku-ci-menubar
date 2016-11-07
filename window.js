@@ -1,5 +1,6 @@
 var path = require('path');
-const { shell } = require('electron')
+const { shell } = require('electron');
+const Mustache = require('mustache');
 
 function notifyTestResult() {
   const notification = new Notification('Test Passed', { body: "ohh yes it passed" });
@@ -11,3 +12,15 @@ function notifyTestResult() {
 
 notifyTestResult();
 // setInterval(notifyTestResult, 3000); // every 3 seconds
+
+function loadUser() {
+  var template = document.getElementById('template').innerHTML;
+  Mustache.parse(template);   // optional, speeds up future uses
+  var rendered = Mustache.render(template, {name: "Luke"});
+  document.getElementById('target').innerHTML = rendered;
+  console.log(rendered);
+}
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  loadUser();
+});
