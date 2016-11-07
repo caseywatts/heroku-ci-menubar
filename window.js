@@ -13,12 +13,16 @@ function notifyTestResult() {
 notifyTestResult();
 // setInterval(notifyTestResult, 3000); // every 3 seconds
 
+
 function renderBuildTemplate(someData) {
-  var template = document.getElementById('template').innerHTML;
-  Mustache.parse(template);   // optional, speeds up future uses
-  var rendered = Mustache.render(template, someData);
-  document.getElementById('target').innerHTML = rendered;
-  console.log(rendered);
+  const buildTemplate = `
+  This build number {{ buildNumber }}
+  <br />
+  {{ state }}!
+  `;
+  Mustache.parse(buildTemplate);   // optional, speeds up future uses
+  var rendered = Mustache.render(buildTemplate, someData);
+  document.getElementById('content').innerHTML = rendered;
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
