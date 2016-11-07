@@ -10,10 +10,6 @@ function notifyTestResult() {
   setTimeout(notification.close.bind(notification), 5000); // close after 5 seconds
 }
 
-notifyTestResult();
-// setInterval(notifyTestResult, 3000); // every 3 seconds
-
-
 function renderBuildTemplate(someData) {
   const buildTemplate = `
   This build number {{ buildNumber }}
@@ -25,10 +21,22 @@ function renderBuildTemplate(someData) {
   document.getElementById('content').innerHTML = rendered;
 }
 
+
+function dispatchEventForSomeData(someData) {
+  document.dispatchEvent(new CustomEvent('someDataHasArrived', {detail: someData}));
+}
+
+document.addEventListener('someDataHasArrived', function (e) {
+  renderBuildTemplate(e.detail);
+  notifyTestResult();
+  // change Icon
+}, false);
+
 document.addEventListener("DOMContentLoaded", function(event) {
   const someData = {
     state: 'passed',
     buildNumber: 1
   };
-  renderBuildTemplate(someData);
+
+  setTimeout(dispatchEventForSomeData, 1000, someData);
 });
