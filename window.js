@@ -28,7 +28,7 @@ function renderBuildTemplate(someData) {
   `;
   Mustache.parse(buildTemplate);   // optional, speeds up future uses
   var rendered = Mustache.render(buildTemplate, someData);
-  document.getElementById('content').innerHTML = rendered;
+  document.getElementById('content').insertAdjacentHTML('afterbegin', rendered);
 }
 
 ipcRenderer.on('someDataHasArrived', (event, { buildData, notificationIconPath }) => {
