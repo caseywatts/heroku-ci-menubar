@@ -25,11 +25,12 @@ app.on('ready', function(){
     win.isVisible() ? win.hide() : win.show()
   })
   tray.setToolTip('Heroku CI Menubar');
-  function setTrayIcon(buildStatus) {
-    tray.setImage(iconPath(buildStatus));
-    tray.setPressedImage(iconPath(buildStatus));
-  }
 });
+
+function setTrayIcon(buildStatus) {
+  tray.setImage(iconPath(buildStatus));
+  tray.setPressedImage(iconPath(buildStatus));
+}
 
 function iconState(buildStatus) {
   const iconStateForBuildStatus = {
