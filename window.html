@@ -1,28 +1,34 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="window.css">
 	</head>
 	<body>
 		<script src="window.js"></script>
-		<div>
-			<a href="#" onclick="showMain()">main</a>
-			<a href="#" onclick="showSettings()">settings</a>
-			<button onclick="quit()" style="float:right;">Quit</button>
-		</div>
-		<div id="main">
-			<div id="content"></div>
-		</div>
-		<div id="settings" style="display:none;">
-			<div>
-				<label>API Key</label>
-				<div>From the <a href="#" onclick="shell.openExternal('https://dashboard.heroku.com/account');">Dashboard Accounts Page</a></div>
-				<input type="text" name="token" style="width:100%;">
-				<button onclick="saveToken()">Save Token</button>
+		<div class="modal">
+			<nav>
+				<ul class="nav--main">
+					<li><a href="#" class="active" onclick="showMain()">Main</a></li>
+					<li><a href="#" onclick="showSettings()">Settings</a></li>
+					<li><a href="#" onclick="quit()">Quit</a></li>
+				</ul>
+			</nav>
+			<div id="main">
+				<ul class="ci-status" id="content">
+				</ul>
 			</div>
-			<div>
-				<label>Pipeline ID</label>
-				<input type="text" name="pipeline-id" style="width:100%;">
-				<button onclick="savePipelineId()">Save Pipeline Id</button>
+			<div id="settings" style="display:none;">
+				<div>
+					<label>API Key</label>
+					<div>From the <a href="#" onclick="shell.openExternal('https://dashboard.heroku.com/account');">Dashboard Accounts Page</a></div>
+					<input type="text" name="token" style="width:100%;">
+					<button onclick="saveToken()">Save Token</button>
+				</div>
+				<div>
+					<label>Pipeline ID</label>
+					<input type="text" name="pipeline-id" style="width:100%;">
+					<button onclick="savePipelineId()">Save Pipeline Id</button>
+				</div>
 			</div>
 		</div>
 	</body>

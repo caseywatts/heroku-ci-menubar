@@ -18,9 +18,13 @@ function notifyTestResult(buildData, notificationIconPath) {
 
 function renderBuildTemplate(someData) {
   const buildTemplate = `
-  This build number {{ number }}
-  <br />
-  {{ status }}!
+  <li class="status--details">
+    <div class="status--copy {{ status }}">
+      <div class="title">{{ commitBranch }}</div>
+      <div class="">authored by {{ actorEmail }}</div>
+      <div class="">Build Number: {{ number }} <strong>{{ status }}</strong></div>
+    </div>
+  </li>
   `;
   Mustache.parse(buildTemplate);   // optional, speeds up future uses
   var rendered = Mustache.render(buildTemplate, someData);
