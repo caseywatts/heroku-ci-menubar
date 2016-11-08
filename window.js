@@ -6,7 +6,6 @@ const storage = require('electron-json-storage');
 function notifyTestResult(buildData, notificationIconPath) {
   const notification = new Notification(
     `Build ${buildData.number} ${buildData.status}`,{
-      body: "oh my",
       icon: notificationIconPath
     }
   );
@@ -18,13 +17,17 @@ function notifyTestResult(buildData, notificationIconPath) {
 
 function renderBuildTemplate(someData) {
   const buildTemplate = `
-  This build number {{ number }}
-  <br />
-  {{ status }}!
+  <li class="status--details">
+    <div class="status--copy {{ status }}">
+      <div class="title">{{ commitBranch }}</div>
+      <div class="">authored by {{ actorEmail }}</div>
+      <div class="">Build Number: {{ number }} <strong>{{ status }}</strong></div>
+    </div>
+  </li>
   `;
   Mustache.parse(buildTemplate);   // optional, speeds up future uses
   var rendered = Mustache.render(buildTemplate, someData);
-  document.getElementById('content').innerHTML = rendered;
+  document.getElementById('content').insertAdjacentHTML('afterbegin', rendered);
 }
 
 ipcRenderer.on('someDataHasArrived', (event, { buildData, notificationIconPath }) => {
@@ -44,7 +47,6 @@ function showToken() {
 function saveToken() {
   const token = document.getElementsByName('token')[0].value;
   storage.set('token', token);
-  ipcRenderer.send('reconnect', 'please');
   showToken();
 }
 
@@ -57,8 +59,13 @@ function showPipelineId() {
 function savePipelineId() {
   const pipelineId = document.getElementsByName('pipeline-id')[0].value;
   storage.set('pipeline-id', pipelineId);
-  ipcRenderer.send('reconnect', 'please');
   showPipelineId();
+}
+
+function saveForm() {
+  savePipelineId();
+  saveToken();
+  ipcRenderer.send('reconnect', 'please');
 }
 
 showToken();
@@ -70,10 +77,16 @@ function quit() {
 
 function showMain() {
   document.getElementById('settings').style.display = 'none';
+  document.getElementById('settings-nav').classList.remove('active')
+
   document.getElementById('main').style.display = 'block';
+  document.getElementById('main-nav').classList.add('active')
 }
 
 function showSettings() {
   document.getElementById('settings').style.display = 'block';
+  document.getElementById('settings-nav').classList.add('active')
+
   document.getElementById('main').style.display = 'none';
+  document.getElementById('main-nav').classList.remove('active')
 }
