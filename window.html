@@ -15,6 +15,7 @@
 		<div id="settings" style="display:none;">
 			<div>
 				<label>API Token</label>
+				<div>Go to Dashboard and paste this in the javascript console <textarea contenteditable=false>JSON.parse(localStorage['ember_simple_auth:session']).authenticated.access_token</textarea></div>
 				<input type="text" name="token" style="width:100%;">
 				<button onclick="saveToken()">Save Token</button>
 			</div>
