@@ -67,3 +67,13 @@ showPipelineId();
 function quit() {
   ipcRenderer.send('quit', 'please');
 }
+
+function showMain() {
+  document.getElementById('settings').style.display = 'none';
+  document.getElementById('main').style.display = 'block';
+}
+
+function showSettings() {
+  document.getElementById('settings').style.display = 'block';
+  document.getElementById('main').style.display = 'none';
+}

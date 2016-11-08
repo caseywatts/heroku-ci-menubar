@@ -5,16 +5,24 @@
 	<body>
 		<script src="window.js"></script>
 		<div>
-			<label>API Token</label>
-			<input type="text" name="token" style="width:100%;">
-			<button onclick="saveToken()">Save Token</button>
+			<a href="#" onclick="showMain()">main</a>
+			<a href="#" onclick="showSettings()">settings</a>
+			<button onclick="quit()" style="float:right;">Quit</button>
 		</div>
-		<div>
-			<label>Pipeline ID</label>
-			<input type="text" name="pipeline-id" style="width:100%;">
-			<button onclick="savePipelineId()">Save Pipeline Id</button>
+		<div id="main">
+			<div id="content"></div>
 		</div>
-		<button onclick="quit()">Quit</button>
-		<div id="content"></div>
+		<div id="settings" style="display:none;">
+			<div>
+				<label>API Token</label>
+				<input type="text" name="token" style="width:100%;">
+				<button onclick="saveToken()">Save Token</button>
+			</div>
+			<div>
+				<label>Pipeline ID</label>
+				<input type="text" name="pipeline-id" style="width:100%;">
+				<button onclick="savePipelineId()">Save Pipeline Id</button>
+			</div>
+		</div>
 	</body>
 </html>
