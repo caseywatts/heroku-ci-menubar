@@ -33,3 +33,18 @@ ipcRenderer.on('someDataHasArrived', (event, { buildData, notificationIconPath }
   }
   renderBuildTemplate(buildData);
 }, false);
+
+function showToken() {
+  storage.get('token', (error, token) => {
+    console.log(token);
+    document.getElementsByName('token')[0].value = token;
+  })
+}
+showToken();
+
+function saveToken() {
+  const token = document.getElementsByName('token')[0].value;
+  console.log(token);
+  storage.set('token', {'token': token});
+  showToken();
+}

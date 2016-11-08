@@ -101,7 +101,6 @@ function iconState(buildStatus) {
   // setTimeout(dispatchEventForSomeData, 1000, importantBits);
 
 
-  storage.set('token', process.env['AUTHORIZATION_BEARER_TOKEN_FOR_HEROKU_CI']);
   socket.on('connect', function(){
     console.log('connect');
 
