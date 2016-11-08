@@ -63,3 +63,7 @@ function savePipelineId() {
 
 showToken();
 showPipelineId();
+
+function quit() {
+  ipcRenderer.send('quit', 'please');
+}

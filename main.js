@@ -154,3 +154,7 @@ socket.on('error', function(err) {
 ipcMain.on('reconnect', () => {
   connectToRooms();
 })
+
+ipcMain.on('quit', () => {
+  app.quit();
+})
