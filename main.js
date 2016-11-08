@@ -5,6 +5,7 @@ const socket = require('socket.io-client').connect('https://simi.heroku.com/', {
   transports: ['websocket']
 });
 const storage = require('electron-json-storage');
+// require('electron-debug')({showDevTools: true}); // for debugging
 
 let tray = null;
 let win = null;
