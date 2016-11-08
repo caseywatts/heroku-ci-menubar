@@ -5,7 +5,6 @@ const socket = require('socket.io-client').connect('https://simi.heroku.com/', {
   transports: ['websocket']
 });
 
-const iconPath = path.join(__dirname, 'icon.png');
 let tray = null;
 let win = null;
 
@@ -25,21 +24,33 @@ app.on('ready', function(){
     win.isVisible() ? win.hide() : win.show()
   })
   tray.setToolTip('Heroku CI Menubar');
-  function setTrayIcon(status) {
-    tray.setImage(iconPath(status));
-    tray.setPressedImage(iconPath(status));
+  function setTrayIcon(buildStatus) {
+    tray.setImage(iconPath(buildStatus));
+    tray.setPressedImage(iconPath(buildStatus));
   }
 
-  function iconPath(status) {
-    if (status === 'creating') {status = 'progress';}
-    const iconForStatus = {
+  function iconState(buildStatus) {
+    const iconStateForBuildStatus = {
+      'pending': 'progress',
+      'creating': 'progress',
+      'building': 'progress',
+      'running': 'progress',
+      'failed': 'fail',
+      'succeeded': 'pass',
+      'errored': 'error'
+    };
+    return iconStateForBuildStatus[buildStatus] || 'default';
+  }
+
+  function iconPath(buildStatus) {
+    const iconPathForIconState = {
       'default': path.join(__dirname, 'icons/MenubarStateIcons/IconDefault.png'),
       'error': path.join(__dirname, 'icons/MenubarStateIcons/IconError.png'),
       'fail': path.join(__dirname, 'icons/MenubarStateIcons/IconFail.png'),
       'pass': path.join(__dirname, 'icons/MenubarStateIcons/IconPass.png'),
       'progress': path.join(__dirname, 'icons/MenubarStateIcons/IconProgress.png')
     };
-    return iconForStatus[status];
+    return iconPathForIconState[iconState(buildStatus)];
   }
 
   // data parsing & message sending
