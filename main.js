@@ -54,27 +54,27 @@ app.on('ready', function(){
     return iconPathForIconState[iconState(buildStatus)];
   }
 
-function notificationIcon(buildStatus) {
-  const notificationIconForIconState = {
-    'fail': path.join(__dirname, 'icons/NotificationIcons/NotificationFail.png'),
-    'pass': path.join(__dirname, 'icons/NotificationIcons/NotificationPass.png'),
-    'error': path.join(__dirname, 'icons/NotificationIcons/NotificationError.png')
+  function notificationIcon(buildStatus) {
+    const notificationIconForIconState = {
+      'fail': path.join(__dirname, 'icons/NotificationIcons/NotificationFail.png'),
+      'pass': path.join(__dirname, 'icons/NotificationIcons/NotificationPass.png'),
+      'error': path.join(__dirname, 'icons/NotificationIcons/NotificationError.png')
+    }
+    return notificationIconForIconState[iconState(buildStatus)];
   }
-  return notificationIconForIconState[iconState(buildStatus)];
-}
 
-function iconState(buildStatus) {
-  const iconStateForBuildStatus = {
-    'pending': 'progress',
-    'creating': 'progress',
-    'building': 'progress',
-    'running': 'progress',
-    'failed': 'fail',
-    'succeeded': 'pass',
-    'errored': 'error'
-  };
-  return iconStateForBuildStatus[buildStatus] || 'default';
-}
+  function iconState(buildStatus) {
+    const iconStateForBuildStatus = {
+      'pending': 'progress',
+      'creating': 'progress',
+      'building': 'progress',
+      'running': 'progress',
+      'failed': 'fail',
+      'succeeded': 'pass',
+      'errored': 'error'
+    };
+    return iconStateForBuildStatus[buildStatus] || 'default';
+  }
 
 
   // data parsing & message sending
@@ -128,7 +128,7 @@ function iconState(buildStatus) {
     console.log('update');
     console.log(data);
     // data.forEach((data) => {
-      dispatchEventForSomeData(parseBuildData(data));
+    dispatchEventForSomeData(parseBuildData(data));
     // })
   });
 
@@ -150,7 +150,7 @@ function iconState(buildStatus) {
     console.log('err: ', err);
   });
 
-  ipcMain.on('reconnect', (event, arg) => {
+  ipcMain.on('reconnect', () => {
     connectToRooms();
   })
 });
