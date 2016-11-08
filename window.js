@@ -12,7 +12,7 @@ function notifyTestResult(buildData, notificationIconPath) {
   notification.onclick = function() {
     shell.openExternal(buildData.url);
   }
-  setTimeout(notification.close.bind(notification), 5000); // close after 5 seconds
+  setTimeout(notification.close.bind(notification), 10000); // close after 5 seconds
 }
 
 function renderBuildTemplate(someData) {
@@ -27,6 +27,8 @@ function renderBuildTemplate(someData) {
 }
 
 ipcRenderer.on('someDataHasArrived', (event, { buildData, notificationIconPath }) => {
+  if (buildData.status === 'failed' || buildData.status === 'succeeded' || buildData.status === 'errored') {
+    notifyTestResult(buildData, notificationIconPath);
+  }
   renderBuildTemplate(buildData);
-  notifyTestResult(buildData, notificationIconPath);
 }, false);
