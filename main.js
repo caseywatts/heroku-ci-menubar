@@ -4,6 +4,7 @@ const Positioner = require('electron-positioner');
 const socket = require('socket.io-client').connect('https://simi.heroku.com/', {
   transports: ['websocket']
 });
+const storage = require('electron-json-storage');
 
 let tray = null;
 let win = null;
@@ -100,6 +101,7 @@ function iconState(buildStatus) {
   // setTimeout(dispatchEventForSomeData, 1000, importantBits);
 
 
+  storage.set('token', process.env['AUTHORIZATION_BEARER_TOKEN_FOR_HEROKU_CI']);
   socket.on('connect', function(){
     console.log('connect');
 
@@ -107,10 +109,13 @@ function iconState(buildStatus) {
     let testRuns = `pipelines/${pipelineId}/test-runs`;
     let pipelineCouplings = `pipelines/${pipelineId}/pipeline-couplings`;
 
-    let token = process.env['AUTHORIZATION_BEARER_TOKEN_FOR_HEROKU_CI'];
+    storage.get('token', (error, data) => {
+      if (error) throw error;
 
-    this.emit('joinRoom', { room: testRuns, token });
-    this.emit('joinRoom', { room: pipelineCouplings, token });
+      let token = data;
+      this.emit('joinRoom', { room: testRuns, token });
+      this.emit('joinRoom', { room: pipelineCouplings, token });
+    });
   });
 
   socket.on('update', function(data){

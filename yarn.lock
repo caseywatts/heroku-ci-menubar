@@ -36,6 +36,12 @@ assert-plus@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/assert-plus/-/assert-plus-1.0.0.tgz#f12e0f3c5d77b0b1cdd9146942e4e96c1e4dd525"
 
+async@^2.0.0:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/async/-/async-2.1.2.tgz#612a4ab45ef42a70cde806bad86ee6db047e8385"
+  dependencies:
+    lodash "^4.14.0"
+
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
@@ -255,6 +261,15 @@ electron-is-dev@^0.1.0:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/electron-is-dev/-/electron-is-dev-0.1.2.tgz#8a1043e32b3a1da1c3f553dce28ce764246167e3"
 
+electron-json-storage:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/electron-json-storage/-/electron-json-storage-2.0.3.tgz#60361be55d9068c0cd109c1c61b0a96143a85651"
+  dependencies:
+    async "^2.0.0"
+    exists-file "^2.1.0"
+    lodash "^4.0.1"
+    rimraf "^2.5.1"
+
 electron-localshortcut@^0.6.0:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/electron-localshortcut/-/electron-localshortcut-0.6.1.tgz#c4e268c38a6e42f40de5618fc906d1ed608f11aa"
@@ -311,6 +326,10 @@ es6-promise@^3.2.1:
 escape-string-regexp@^1.0.2:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
+
+exists-file@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/exists-file/-/exists-file-2.1.0.tgz#66ea39b7855a9d8ad2ff485d974f04a93bb888f8"
 
 extend@~3.0.0:
   version "3.0.0"
@@ -611,6 +630,10 @@ load-json-file@^1.0.0:
     pinkie-promise "^2.0.0"
     strip-bom "^2.0.0"
 
+lodash@^4.0.1, lodash@^4.14.0:
+  version "4.16.6"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.16.6.tgz#d22c9ac660288f3843e16ba7d2b5d06cca27d777"
+
 loud-rejection@^1.0.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/loud-rejection/-/loud-rejection-1.6.0.tgz#5b46f80147edee578870f086d04821cf998e551f"
@@ -902,7 +925,7 @@ request@^2.45.0:
     tough-cookie "~2.3.0"
     tunnel-agent "~0.4.1"
 
-rimraf@^2.2.8:
+rimraf@^2.2.8, rimraf@^2.5.1:
   version "2.5.4"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.5.4.tgz#96800093cbf1a0c86bd95b4625467535c29dfa04"
   dependencies:

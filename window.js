@@ -1,6 +1,7 @@
 var path = require('path');
 const { shell, ipcRenderer } = require('electron');
 const Mustache = require('mustache');
+const storage = require('electron-json-storage');
 
 function notifyTestResult(buildData, notificationIconPath) {
   const notification = new Notification(
