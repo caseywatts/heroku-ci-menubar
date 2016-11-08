@@ -2,10 +2,15 @@ var path = require('path');
 const { shell, ipcRenderer } = require('electron');
 const Mustache = require('mustache');
 
-function notifyTestResult(someData) {
-  const notification = new Notification(`Build ${someData.number} ${someData.status}`, { body: "oh my" });
+function notifyTestResult(buildData, notificationIconPath) {
+  const notification = new Notification(
+    `Build ${buildData.number} ${buildData.status}`,{
+      body: "oh my",
+      icon: notificationIconPath
+    }
+  );
   notification.onclick = function() {
-    shell.openExternal(someData.url);
+    shell.openExternal(buildData.url);
   }
   setTimeout(notification.close.bind(notification), 5000); // close after 5 seconds
 }
@@ -21,7 +26,7 @@ function renderBuildTemplate(someData) {
   document.getElementById('content').innerHTML = rendered;
 }
 
-ipcRenderer.on('someDataHasArrived', (event, someData) => {
-  renderBuildTemplate(someData);
-  notifyTestResult(someData);
+ipcRenderer.on('someDataHasArrived', (event, { buildData, notificationIconPath }) => {
+  renderBuildTemplate(buildData);
+  notifyTestResult(buildData, notificationIconPath);
 }, false);
