@@ -13,7 +13,7 @@ function notifyTestResult(buildData, notificationIconPath) {
   notification.onclick = function() {
     shell.openExternal(buildData.url);
   }
-  setTimeout(notification.close.bind(notification), 10000); // close after 5 seconds
+  setTimeout(notification.close.bind(notification), 15000); // close after 5 seconds
 }
 
 function renderBuildTemplate(someData) {
