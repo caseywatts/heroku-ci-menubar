@@ -73,10 +73,16 @@ function quit() {
 
 function showMain() {
   document.getElementById('settings').style.display = 'none';
+  document.getElementById('settings-nav').classList.remove('active')
+
   document.getElementById('main').style.display = 'block';
+  document.getElementById('main-nav').classList.add('active')
 }
 
 function showSettings() {
   document.getElementById('settings').style.display = 'block';
+  document.getElementById('settings-nav').classList.add('active')
+
   document.getElementById('main').style.display = 'none';
+  document.getElementById('main-nav').classList.remove('active')
 }
