@@ -1,4 +1,4 @@
-const {app, Tray, Menu, BrowserWindow} = require('electron');
+const {app, Tray, Menu, BrowserWindow, ipcMain} = require('electron');
 const path = require('path');
 const Positioner = require('electron-positioner');
 const socket = require('socket.io-client').connect('https://simi.heroku.com/', {
@@ -104,10 +104,11 @@ function iconState(buildStatus) {
   // on new key or pipeline etc
 
   function connectToRooms() {
+    console.log('connecting to rooms');
     storage.get('pipeline-id', (error, pipelineId) => {
-      if (error) throw error;
+      // if (error) throw error;
       storage.get('token', (error, token) => {
-        if (error) throw error;
+        // if (error) throw error;
 
         let testRuns = `pipelines/${pipelineId}/test-runs`;
         let pipelineCouplings = `pipelines/${pipelineId}/pipeline-couplings`;
@@ -148,4 +149,8 @@ function iconState(buildStatus) {
   socket.on('error', function(err) {
     console.log('err: ', err);
   });
+
+  ipcMain.on('reconnect', (event, arg) => {
+    connectToRooms();
+  })
 });

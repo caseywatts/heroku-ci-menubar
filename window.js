@@ -44,6 +44,7 @@ function showToken() {
 function saveToken() {
   const token = document.getElementsByName('token')[0].value;
   storage.set('token', token);
+  ipcRenderer.send('reconnect', 'please');
   showToken();
 }
 
@@ -56,6 +57,7 @@ function showPipelineId() {
 function savePipelineId() {
   const pipelineId = document.getElementsByName('pipeline-id')[0].value;
   storage.set('pipeline-id', pipelineId);
+  ipcRenderer.send('reconnect', 'please');
   showPipelineId();
 }
 
