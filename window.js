@@ -6,7 +6,6 @@ const storage = require('electron-json-storage');
 function notifyTestResult(buildData, notificationIconPath) {
   const notification = new Notification(
     `Build ${buildData.number} ${buildData.status}`,{
-      body: "oh my",
       icon: notificationIconPath
     }
   );
