@@ -11,6 +11,8 @@ let tray = null;
 let win = null;
 
 app.on('ready', function(){
+  app.dock.hide(); // don't show icon in dock or app switcher
+
   // Window Setup
   // win = new BrowserWindow({show: true}); // for debugging
   win = new BrowserWindow({width: 400, height: 300, frame: false, show: false});
