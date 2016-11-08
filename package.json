@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build-osx": "electron-packager . --platform='darwin' --out='releases' --overwrite=true --icon='icons/AppIcon/AppIcon.icns'"
   },
   "dependencies": {
     "electron-debug": "^1.1.0",
