@@ -101,20 +101,26 @@ function iconState(buildStatus) {
   // setTimeout(dispatchEventForSomeData, 1000, importantBits);
 
 
+  // on new key or pipeline etc
+
+  function connectToRooms() {
+    storage.get('pipeline-id', (error, pipelineId) => {
+      if (error) throw error;
+      storage.get('token', (error, token) => {
+        if (error) throw error;
+
+        let testRuns = `pipelines/${pipelineId}/test-runs`;
+        let pipelineCouplings = `pipelines/${pipelineId}/pipeline-couplings`;
+
+        socket.emit('joinRoom', { room: testRuns, token });
+        socket.emit('joinRoom', { room: pipelineCouplings, token });
+      });
+    })
+  }
+
   socket.on('connect', function(){
     console.log('connect');
-
-    let pipelineId = '26fe90c9-20d7-47ed-816d-466cb4c64bb7';
-    let testRuns = `pipelines/${pipelineId}/test-runs`;
-    let pipelineCouplings = `pipelines/${pipelineId}/pipeline-couplings`;
-
-    storage.get('token', (error, data) => {
-      if (error) throw error;
-
-      let token = data;
-      this.emit('joinRoom', { room: testRuns, token });
-      this.emit('joinRoom', { room: pipelineCouplings, token });
-    });
+    connectToRooms();
   });
 
   socket.on('update', function(data){
