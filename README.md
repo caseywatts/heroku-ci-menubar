@@ -2,7 +2,6 @@
 
 ### Setup
 ```
-npm install -g electron-prebuilt
 npm install -g yarn
 yarn install
 ```
@@ -10,7 +9,7 @@ yarn install
 ### Run the app
 
 ```
-electron .
+npm start
 ```
 
 ### Building
