@@ -19,7 +19,7 @@ function notifyTestResult(buildData, notificationIconPath) {
 
 function renderBuildTemplate(someData) {
   const buildTemplate = `
-  <li class="status--details">
+  <li class="status--details" id="build-{{ number }}">
     <div class="status--copy {{ status }}">
       <div class="state">
         <i class="icon icon-{{ status }}"></i>
@@ -34,15 +34,20 @@ function renderBuildTemplate(someData) {
   </li>
   `;
   Mustache.parse(buildTemplate);   // optional, speeds up future uses
-  var rendered = Mustache.render(buildTemplate, someData);
-  document.getElementById('content').insertAdjacentHTML('afterbegin', rendered);
+  return Mustache.render(buildTemplate, someData);
 }
 
 ipcRenderer.on('someDataHasArrived', (event, { buildData, notificationIconPath }) => {
   if (buildData.status === 'failed' || buildData.status === 'succeeded' || buildData.status === 'errored') {
     notifyTestResult(buildData, notificationIconPath);
   }
-  renderBuildTemplate(buildData);
+  const rendered = renderBuildTemplate(buildData);
+  if (document.getElementById(`build-${buildData.number}`)) {
+    document.getElementById(`build-${buildData.number}`).outerHTML = rendered
+
+  } else {
+    document.getElementById('content').insertAdjacentHTML('afterbegin', rendered);
+  }
 }, false);
 
 
