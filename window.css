@@ -195,30 +195,36 @@ ul.ci-status li .status--copy .state {
   margin-right: 8px;
 }
 
-ul.ci-status li .status--copy .info {
-
-}
-
 ul.ci-status li .status--copy .title {
   color: #333;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   display: block;
 }
 
-
-ul.ci-status li .status--copy code {
+ul.ci-status li .status--copy .title code {
   font-weight: 500;
-  font-family: Courier;
-  background: #ccc;
+  font-size: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #999;
   color: #fff;
-  border-radius: 3px;
-  padding: 0 3px;
-  margin-right: 6px;
+  border-radius: 8px;
+  padding: 1px 4px;
+  margin-right: 2px;
 }
 
-ul.ci-status li .status--copy b {
+ul.ci-status li .status--copy .commit {
+  font-size: 11px;
+  line-height: 13px;
+}
+
+ul.ci-status li .status--copy .commit b {
   font-weight: 500;
+}
+
+ul.ci-status li .status--copy .build {
+  font-size: 11px;
+  color: #999;
 }
 
 ul.ci-status li .status--copy .icon {

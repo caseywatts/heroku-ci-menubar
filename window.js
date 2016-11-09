@@ -25,9 +25,9 @@ function renderBuildTemplate(someData) {
         <i class="icon icon-{{ status }}"></i>
       </div>
       <div class="info">
-        <div class="title">{{ commitBranch }}</div>
-        <div class="commit"><code>{{ commitSha }}</code> {{ commitMessage }}</div>
-        <div class="build"><b>Build #{{ number }}</b> by {{ actorEmail }} {{ status }}</div>
+        <div class="title"><code>#{{ number }}</code> {{ commitBranch }}</div>
+        <div class="commit"><b>"{{ commitMessage }}"</b> by {{ actorEmail }}</div>
+        <div class="build">Test run {{ status }}</div>
       </div>
     </div>
   </li>
