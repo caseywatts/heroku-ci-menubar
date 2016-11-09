@@ -19,7 +19,7 @@
 			<div id="settings" style="display:none;">
 				<div class="field">
 					<label>API Key</label>
-					<p>From the <a href="#" onclick="shell.openExternal('https://dashboard.heroku.com/account');">Dashboard Account Settings</a> page</p>
+					<p>From your <a href="#" onclick="shell.openExternal('https://dashboard.heroku.com/account');">Dashboard Account</a> page</p>
 					<input type="text" name="token">
 				</div>
 				<div class="field">
@@ -27,17 +27,19 @@
 					<input type="text" name="pipeline-id">
 				</div>
 				<div class="field">
-					<label>Contributor Email (filter)</label>
-					<input type="text" name="contributor-email" style="width:100%;">
+					<label>Filter by contributor</label>
+					<input type="text" name="contributor-email" placeholder="user@email.com">
 				</div>
 				<div class="field">
 					<button onclick="saveForm()">Save</button>
 				</div>
-				<div class="field">
-					<label>Auto Launch</label>
-					<input type="checkbox" name="auto-launch" onchange="saveAutoLaunch()"/>
-				</div>
 				<div id="quit">
+					<div class="launch">
+						<label>
+							<input type="checkbox" name="auto-launch" onchange="saveAutoLaunch()" />
+							Launch at login
+						</label>
+					</div>
 					<a href="#" onclick="quit()">Quit CI Notifications</a>
 				</div>
 			</div>

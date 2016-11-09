@@ -97,6 +97,19 @@ nav .nav--main li a#settings-nav.active i, nav .nav--main li a#settings-nav:hove
   display: flex;
 }
 
+#quit .launch {
+  padding: 6px 15px 10px;
+}
+
+#quit .launch label {
+  color: #777;
+  font-size: 12px;
+}
+
+#quit .launch label input {
+  margin-right: 3px;
+}
+
 #quit a {
   margin-left: auto;
   color: #777;
@@ -106,7 +119,7 @@ nav .nav--main li a#settings-nav.active i, nav .nav--main li a#settings-nav:hove
 }
 
 #settings {
-  padding: 30px;
+  padding: 20px 30px;
 }
 
 #settings .field {
