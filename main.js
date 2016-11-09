@@ -15,7 +15,7 @@ app.on('ready', function(){
 
   // Window Setup
   // win = new BrowserWindow({show: true}); // for debugging
-  win = new BrowserWindow({width: 400, height: 340, frame: false, show: false, resizable:false});
+  win = new BrowserWindow({width: 400, height: 340, frame: false, show: false, resizable: false});
   win.loadURL('file://' + __dirname + '/window.html');
   win.on('blur', win.hide);
 
