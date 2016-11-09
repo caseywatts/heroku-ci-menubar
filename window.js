@@ -2,6 +2,7 @@ var path = require('path');
 const { shell, ipcRenderer } = require('electron');
 const Mustache = require('mustache');
 const storage = require('electron-json-storage');
+const AutoLaunch = require('auto-launch');
 
 function notifyTestResult(buildData, notificationIconPath) {
   const notification = new Notification(
@@ -94,4 +95,19 @@ function showSettings() {
 
   document.getElementById('main').style.display = 'none';
   document.getElementById('main-nav').classList.remove('active')
+}
+
+function createAutoLauncher() {
+  return new AutoLaunch({
+    name: 'Heroku CI Menubar',
+    path: '/Applications/heroku-ci-menubar.app',
+  });
+}
+
+function enableAutoLauncher() {
+  createAutoLauncher().enable();
+}
+
+function disableAutoLauncher() {
+  createAutoLauncher().disable();
 }

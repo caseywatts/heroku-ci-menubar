@@ -8,6 +8,7 @@
     "copy-osx-build-to-applications": "cp -r releases/heroku-ci-menubar-darwin-x64/heroku-ci-menubar.app /Applications"
   },
   "dependencies": {
+    "auto-launch": "^5.0.1",
     "electron-debug": "^1.1.0",
     "electron-json-storage": "^2.0.3",
     "electron-positioner": "^3.0.0",
