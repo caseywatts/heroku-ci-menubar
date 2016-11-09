@@ -36,7 +36,38 @@ function renderBuildTemplate(someData) {
   return Mustache.render(buildTemplate, someData);
 }
 
+function renderPipelineWillAppear(pipelineNumber) {
+  const template = `
+  builds for pipeline {{ pipelineNumber }} will appear here
+  `;
+  Mustache.parse(template);   // optional, speeds up future uses
+  return Mustache.render(template, {pipelineNumber});
+}
+
+function renderPleaseDoSettings(pipelineNumber) {
+  const template = `
+  please set a pipeline-id and api token in settings
+  `;
+  Mustache.parse(template);   // optional, speeds up future uses
+  return Mustache.render(template, {pipelineNumber});
+}
+
+
+function renderEmptyState() {
+  document.getElementById('content').innerHTML = "";
+  storage.get('pipeline-id', (error, pipelineId) => {
+    storage.get('api-token', (error, apiToken) => {
+      if (pipelineId && apiToken) {
+        document.getElementById('empty-state').innerHTML = renderPipelineWillAppear(pipelineId);
+      } else {
+        document.getElementById('empty-state').innerHTML = renderPleaseDoSettings();
+      }
+    })
+  })
+}
+
 ipcRenderer.on('someDataHasArrived', (event, { buildData, notificationIconPath }) => {
+  document.getElementById('empty-state').style.display = 'none';
   if (buildData.status === 'failed' || buildData.status === 'succeeded' || buildData.status === 'errored') {
     notifyTestResult(buildData, notificationIconPath);
   }
@@ -106,13 +137,9 @@ function saveForm() {
   savePipelineId();
   saveToken();
   saveContributorEmail();
+  renderEmptyState();
   ipcRenderer.send('reconnect', 'please');
 }
-
-showToken();
-showPipelineId();
-showContributorEmail();
-showAutoLaunch();
 
 function quit() {
   ipcRenderer.send('quit', 'please');
@@ -148,3 +175,11 @@ function enableAutoLauncher() {
 function disableAutoLauncher() {
   createAutoLauncher().disable();
 }
+
+document.addEventListener("DOMContentLoaded", function(event) { // document ready
+  renderEmptyState();
+  showToken();
+  showPipelineId();
+  showContributorEmail();
+  showAutoLaunch();
+});
