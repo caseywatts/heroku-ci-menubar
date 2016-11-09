@@ -26,9 +26,8 @@ function renderBuildTemplate(someData) {
       </div>
       <div class="info">
         <div class="title">{{ commitBranch }}</div>
-        <div class="">{{ commitMessage }}</div>
-        <div class="author">{{ commitSha }} authored by {{ actorEmail }}</div>
-        <div class="build"><a href="{{ url }}">Build Number: {{ number }} <strong>{{ status }}</strong></a></div>
+        <div class="commit"><code>{{ commitSha }}</code> {{ commitMessage }}</div>
+        <div class="build"><b>Build #{{ number }}</b> by {{ actorEmail }} {{ status }}</div>
       </div>
     </div>
   </li>

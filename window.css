@@ -64,10 +64,6 @@ nav .nav--main li a.active, nav .nav--main li a:hover {
   box-shadow: 0 1px 0 #79589F;
 }
 
-nav .nav--main li a#settings-nav.active, nav .nav--main li a#settings-nav:hover {
-  box-shadow: none;
-}
-
 nav .nav--main li a#settings-nav i {
   position: relative;
   top: -2px;
@@ -205,9 +201,24 @@ ul.ci-status li .status--copy .info {
 
 ul.ci-status li .status--copy .title {
   color: #333;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   display: block;
+}
+
+
+ul.ci-status li .status--copy code {
+  font-weight: 500;
+  font-family: Courier;
+  background: #ccc;
+  color: #fff;
+  border-radius: 3px;
+  padding: 0 3px;
+  margin-right: 6px;
+}
+
+ul.ci-status li .status--copy b {
+  font-weight: 500;
 }
 
 ul.ci-status li .status--copy .icon {
