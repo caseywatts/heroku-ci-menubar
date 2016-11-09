@@ -9,7 +9,9 @@ yarn install
 
 ### Run the app
 
-`electron .`
+```
+electron .
+```
 
 ### Building
 
