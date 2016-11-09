@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="window.css">
+	</head>
+	<body>
+		<script src="window.js"></script>
+		<div class="modal">
+			<nav>
+				<ul class="nav--main">
+					<li><a href="#" id="main-nav" class="active" onclick="showMain()">Heroku CI Builds</a></li>
+					<li><a href="#" id="settings-nav" onclick="showSettings()"><i></i></a></li>
+				</ul>
+			</nav>
+			<div id="main">
+				<ul class="ci-status" id="content">
+				</ul>
+				<div id="empty-state"></div>
+			</div>
+			<div id="settings" style="display:none;">
+				<div class="field">
+					<label>API Key</label>
+					<p>From your <a href="#" onclick="shell.openExternal('https://dashboard.heroku.com/account');">Dashboard Account</a> page</p>
+					<input type="text" name="token">
+				</div>
+				<div class="field">
+					<label>Pipeline ID</label>
+					<input type="text" name="pipeline-id">
+				</div>
+				<div class="field">
+					<label>Filter by contributor</label>
+					<input type="text" name="contributor-email" placeholder="user@email.com">
+				</div>
+				<div class="field">
+					<button onclick="saveForm()">Save</button>
+				</div>
+				<div id="quit">
+					<div class="launch">
+						<label>
+							<input type="checkbox" name="auto-launch" onchange="saveAutoLaunch()" />
+							Auto-start on login
+						</label>
+					</div>
+					<a href="#" onclick="quit()">Quit CI Notifications</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
