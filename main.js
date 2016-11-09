@@ -62,9 +62,9 @@ function iconPath(buildStatus) {
 
 function notificationIcon(buildStatus) {
   const notificationIconForIconState = {
-    'fail': path.join(__dirname, 'icons/NotificationIcons/NotificationFail.png'),
-    'pass': path.join(__dirname, 'icons/NotificationIcons/NotificationPass.png'),
-    'error': path.join(__dirname, 'icons/NotificationIcons/NotificationError.png')
+    'fail': path.join(__dirname, 'icons/NotificationIcons/Fail.png'),
+    'pass': path.join(__dirname, 'icons/NotificationIcons/Pass.png'),
+    'error': path.join(__dirname, 'icons/NotificationIcons/Error.png')
   }
   return notificationIconForIconState[iconState(buildStatus)];
 }

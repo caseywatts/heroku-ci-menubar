@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="d" x1="0%" y1="0%" y2="100%">
+      <stop stop-color="#F37A65" offset="0%"/>
+      <stop stop-color="#D64242" offset="100%"/>
+    </linearGradient>
+    <circle id="a" cx="16" cy="16" r="14"/>
+    <filter id="b" width="200%" height="200%" x="-50%" y="-50%" filterUnits="objectBoundingBox">
+      <feOffset dy=".5" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation=".75" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.147843071 0" in="shadowBlurOuter1"/>
+    </filter>
+    <mask id="c" width="28" height="28" x="0" y="0" fill="white">
+      <use xlink:href="#a"/>
+    </mask>
+    <path id="f" d="M17.9763724,16 L21.8680738,12.1082986 C22.2531966,11.7231758 22.2561332,11.0813355 21.8620693,10.6872716 L21.3127284,10.1379307 C20.9167511,9.74195336 20.282449,9.74117853 19.8917014,10.1319262 L16,14.0236276 L12.1082986,10.1319262 C11.717551,9.74117853 11.0832489,9.74195336 10.6872716,10.1379307 L10.1379307,10.6872716 C9.74386685,11.0813355 9.7468034,11.7231758 10.1319262,12.1082986 L14.0236276,16 L10.1319262,19.8917014 C9.7468034,20.2768242 9.74386685,20.9186645 10.1379307,21.3127284 L10.6872716,21.8620693 C11.0832489,22.2580466 11.717551,22.2588215 12.1082986,21.8680738 L16,17.9763724 L19.8917014,21.8680738 C20.282449,22.2588215 20.9167511,22.2580466 21.3127284,21.8620693 L21.8620693,21.3127284 C22.2561332,20.9186645 22.2531966,20.2768242 21.8680738,19.8917014 L17.9763724,16 Z"/>
+    <filter id="e" width="200%" height="200%" x="-50%" y="-50%" filterUnits="objectBoundingBox">
+      <feOffset dy="-1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.100430254 0" in="shadowOffsetOuter1"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <use fill="black" filter="url(#b)" xlink:href="#a"/>
+    <use fill="url(#d)" stroke="#000000" stroke-opacity=".1" mask="url(#c)" xlink:href="#a"/>
+    <g>
+      <use fill="black" filter="url(#e)" xlink:href="#f"/>
+      <use fill="#FFFFFF" xlink:href="#f"/>
+    </g>
+  </g>
+</svg>
