@@ -17,6 +17,7 @@ app.on('ready', function(){
   // win = new BrowserWindow({show: true}); // for debugging
   win = new BrowserWindow({width: 400, height: 300, frame: false, show: false});
   win.loadURL('file://' + __dirname + '/window.html');
+  win.on('blur', win.hide);
 
 
   // Tray setup
