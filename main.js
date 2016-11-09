@@ -92,6 +92,8 @@ function parseBuildData(sampleData) {
     status: sampleData.data['status'],
     actorEmail: sampleData.data['actor_email'],
     commitBranch: sampleData.data['commit_branch'],
+    commitMessage: sampleData.data['commit_message'],
+    commitSha: sampleData.data['commit_sha'].slice(0,6),
     number,
     pipelineId,
     url: `https://dashboard.heroku.com/pipelines/${pipelineId}/tests/${number}`
