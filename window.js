@@ -82,6 +82,22 @@ function saveContributorEmail() {
   showContributorEmail();
 }
 
+function showAutoLaunch() {
+  storage.get('auto-launch', (error, autoLaunch) => {
+    document.getElementsByName('auto-launch')[0].checked = autoLaunch;
+  })
+}
+
+function saveAutoLaunch() {
+  const autoLaunch = document.getElementsByName('auto-launch')[0].checked;
+  storage.set('auto-launch', autoLaunch);
+  if (autoLaunch) {
+    enableAutoLauncher();
+  } else {
+    disableAutoLauncher();
+  }
+}
+
 function saveForm() {
   savePipelineId();
   saveToken();
@@ -92,6 +108,7 @@ function saveForm() {
 showToken();
 showPipelineId();
 showContributorEmail();
+showAutoLaunch();
 
 function quit() {
   ipcRenderer.send('quit', 'please');
