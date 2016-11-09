@@ -135,21 +135,25 @@ socket.on('connect', function(){
   connectToRooms();
 });
 
-socket.on('update', function(data){
-  console.log('update');
-  console.log(data);
+function dispatchEventForSomeDataIfEmailMatches(data) {
   const parsedData = parseBuildData(data);
   storage.get('contributor-email', (error, email) => {
-    if (parsedData.actorEmail !== email || email === undefined) {
+    if (parsedData.actorEmail === email || email === undefined) {
       dispatchEventForSomeData(parsedData);
     }
   })
+}
+
+socket.on('update', function(data){
+  console.log('update');
+  console.log(data);
+  dispatchEventForSomeDataIfEmailMatches(data)
 });
 
 socket.on('create', function(data){
   console.log('create');
   console.log(data);
-  dispatchEventForSomeData(parseBuildData(data));
+  dispatchEventForSomeDataIfEmailMatches(data)
 });
 
 socket.on('disconnect', function(){
