@@ -38,7 +38,11 @@ function renderBuildTemplate(someData) {
 
 function renderPipelineWillAppear(pipelineNumber) {
   const template = `
-  builds for pipeline {{ pipelineNumber }} will appear here
+  <p>
+    <b>Waiting for test runs</b>
+    <span>Test run builds will appear here when they start</span>
+    <small>Pipeline ID: {{ pipelineNumber }}</small>
+  </p>
   `;
   Mustache.parse(template);   // optional, speeds up future uses
   return Mustache.render(template, {pipelineNumber});
@@ -46,7 +50,11 @@ function renderPipelineWillAppear(pipelineNumber) {
 
 function renderPleaseDoSettings(pipelineNumber) {
   const template = `
-  please set a pipeline-id and api token in settings
+  <p>
+    <b>Setup required</b>
+    <span>Set the pipeline-id and your API token in settings</span>
+    <a href="#" onclick="showSettings()">Settings</a>
+  </p>
   `;
   Mustache.parse(template);   // optional, speeds up future uses
   return Mustache.render(template, {pipelineNumber});
