@@ -207,7 +207,10 @@ ul.ci-status li .status--copy .icon-pending,
 ul.ci-status li .status--copy .icon-creating,
 ul.ci-status li .status--copy .icon-building,
 ul.ci-status li .status--copy .icon-running {
-  background: url('icons/Pending.svg') no-repeat;
+  background: url('icons/Pending1.svg') no-repeat;
+  animation-name: pending;
+  animation-duration: .7s;
+  animation-iteration-count: infinite;
 }
 
 ul.ci-status li .status--copy .icon-succeeded {
@@ -220,4 +223,16 @@ ul.ci-status li .status--copy .icon-failed {
 
 ul.ci-status li .status--copy .icon-errored {
   background: url('icons/Error.svg') no-repeat;
+}
+
+@keyframes pending {
+  0% {
+    background: url('icons/Pending1.svg') no-repeat;
+  } 33% {
+    background: url('icons/Pending2.svg') no-repeat;
+  } 66% {
+    background: url('icons/Pending3.svg') no-repeat;
+  } 100% {
+    background: url('icons/Pending1.svg') no-repeat;
+  }
 }
