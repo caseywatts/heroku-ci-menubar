@@ -63,6 +63,7 @@ function renderPleaseDoSettings(pipelineNumber) {
 
 function renderEmptyState() {
   document.getElementById('content').innerHTML = "";
+  document.getElementById('empty-state').style.display = "flex";
   storage.get('pipeline-id', (error, pipelineId) => {
     storage.get('api-token', (error, apiToken) => {
       if (pipelineId && apiToken) {
