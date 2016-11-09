@@ -70,14 +70,28 @@ function savePipelineId() {
   showPipelineId();
 }
 
+function showContributorEmail() {
+  storage.get('contributor-email', (error, contributorEmail) => {
+    document.getElementsByName('contributor-email')[0].value = contributorEmail;
+  })
+}
+
+function saveContributorEmail() {
+  const contributorEmail = document.getElementsByName('contributor-email')[0].value;
+  storage.set('contributor-email', contributorEmail);
+  showContributorEmail();
+}
+
 function saveForm() {
   savePipelineId();
   saveToken();
+  saveContributorEmail();
   ipcRenderer.send('reconnect', 'please');
 }
 
 showToken();
 showPipelineId();
+showContributorEmail();
 
 function quit() {
   ipcRenderer.send('quit', 'please');
