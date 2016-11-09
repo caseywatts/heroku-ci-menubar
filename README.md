@@ -6,7 +6,9 @@ Install electron executable:
 
 Install dependencies
 
-`npm install`
+`npm install -g yarn`
+
+`yarn install`
 
 Run the app:
 
