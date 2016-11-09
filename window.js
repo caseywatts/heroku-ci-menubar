@@ -127,15 +127,14 @@ function saveContributorEmail() {
 }
 
 function showAutoLaunch() {
-  storage.get('auto-launch', (error, autoLaunch) => {
-    document.getElementsByName('auto-launch')[0].checked = autoLaunch;
-  })
+  isAutoLaunchEnabled().then((isEnabled) => {
+    document.getElementsByName('auto-launch')[0].checked = isEnabled;
+  });
 }
 
 function saveAutoLaunch() {
-  const autoLaunch = document.getElementsByName('auto-launch')[0].checked;
-  storage.set('auto-launch', autoLaunch);
-  if (autoLaunch) {
+  const autoLaunchIsEnabled = document.getElementsByName('auto-launch')[0].checked;
+  if (autoLaunchIsEnabled) {
     enableAutoLauncher();
   } else {
     disableAutoLauncher();
@@ -170,6 +169,9 @@ function showSettings() {
   document.getElementById('main-nav').classList.remove('active')
 }
 
+function isAutoLaunchEnabled() {
+  return createAutoLauncher().isEnabled();
+}
 function createAutoLauncher() {
   return new AutoLaunch({
     name: 'Heroku CI Menubar',
