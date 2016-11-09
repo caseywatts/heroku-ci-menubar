@@ -2,10 +2,12 @@ var path = require('path');
 const { shell, ipcRenderer } = require('electron');
 const Mustache = require('mustache');
 const storage = require('electron-json-storage');
+const AutoLaunch = require('auto-launch');
 
 function notifyTestResult(buildData, notificationIconPath) {
   const notification = new Notification(
     `Build ${buildData.number} ${buildData.status}`,{
+      body: `${buildData.commitMessage} (${buildData.commitSha})`,
       icon: notificationIconPath
     }
   );
@@ -24,7 +26,8 @@ function renderBuildTemplate(someData) {
       </div>
       <div class="info">
         <div class="title">{{ commitBranch }}</div>
-        <div class="author">authored by {{ actorEmail }}</div>
+        <div class="">{{ commitMessage }}</div>
+        <div class="author">{{ commitSha }} authored by {{ actorEmail }}</div>
         <div class="build">Build Number: {{ number }} <strong>{{ status }}</strong></div>
       </div>
     </div>
@@ -67,14 +70,28 @@ function savePipelineId() {
   showPipelineId();
 }
 
+function showContributorEmail() {
+  storage.get('contributor-email', (error, contributorEmail) => {
+    document.getElementsByName('contributor-email')[0].value = contributorEmail;
+  })
+}
+
+function saveContributorEmail() {
+  const contributorEmail = document.getElementsByName('contributor-email')[0].value;
+  storage.set('contributor-email', contributorEmail);
+  showContributorEmail();
+}
+
 function saveForm() {
   savePipelineId();
   saveToken();
+  saveContributorEmail();
   ipcRenderer.send('reconnect', 'please');
 }
 
 showToken();
 showPipelineId();
+showContributorEmail();
 
 function quit() {
   ipcRenderer.send('quit', 'please');
@@ -94,4 +111,19 @@ function showSettings() {
 
   document.getElementById('main').style.display = 'none';
   document.getElementById('main-nav').classList.remove('active')
+}
+
+function createAutoLauncher() {
+  return new AutoLaunch({
+    name: 'Heroku CI Menubar',
+    path: '/Applications/heroku-ci-menubar.app',
+  });
+}
+
+function enableAutoLauncher() {
+  createAutoLauncher().enable();
+}
+
+function disableAutoLauncher() {
+  createAutoLauncher().disable();
 }
