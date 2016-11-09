@@ -19,9 +19,14 @@ function renderBuildTemplate(someData) {
   const buildTemplate = `
   <li class="status--details">
     <div class="status--copy {{ status }}">
-      <div class="title">{{ commitBranch }}</div>
-      <div class="">authored by {{ actorEmail }}</div>
-      <div class="">Build Number: {{ number }} <strong>{{ status }}</strong></div>
+      <div class="state">
+        <i class="icon icon-{{ status }}"></i>
+      </div>
+      <div class="info">
+        <div class="title">{{ commitBranch }}</div>
+        <div class="author">authored by {{ actorEmail }}</div>
+        <div class="build">Build Number: {{ number }} <strong>{{ status }}</strong></div>
+      </div>
     </div>
   </li>
   `;

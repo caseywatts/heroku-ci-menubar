@@ -8,9 +8,8 @@
 		<div class="modal">
 			<nav>
 				<ul class="nav--main">
-					<li><a href="#" id="main-nav" class="active" onclick="showMain()">Main</a></li>
-					<li><a href="#" id="settings-nav" onclick="showSettings()">Settings</a></li>
-					<li><a href="#" onclick="quit()">Quit</a></li>
+					<li><a href="#" id="main-nav" class="active" onclick="showMain()">Heroku CI Builds</a></li>
+					<li><a href="#" id="settings-nav" onclick="showSettings()"><i></i></a></li>
 				</ul>
 			</nav>
 			<div id="main">
@@ -18,16 +17,21 @@
 				</ul>
 			</div>
 			<div id="settings" style="display:none;">
-				<div>
+				<div class="field">
 					<label>API Key</label>
-					<div>From the <a href="#" onclick="shell.openExternal('https://dashboard.heroku.com/account');">Dashboard Accounts Page</a></div>
-					<input type="text" name="token" style="width:100%;">
+					<p>From the <a href="#" onclick="shell.openExternal('https://dashboard.heroku.com/account');">Dashboard Account Settings</a> page</p>
+					<input type="text" name="token">
 				</div>
-				<div>
+				<div class="field">
 					<label>Pipeline ID</label>
-					<input type="text" name="pipeline-id" style="width:100%;">
+					<input type="text" name="pipeline-id">
 				</div>
-				<button onclick="saveForm()">Save</button>
+				<div class="field">
+					<button onclick="saveForm()">Save</button>
+				</div>
+				<div id="quit">
+					<a href="#" onclick="quit()">Quit CI Notifications</a>
+				</div>
 			</div>
 		</div>
 	</body>

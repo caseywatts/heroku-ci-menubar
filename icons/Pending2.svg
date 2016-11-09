@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="f" x1="1.535%" y1="1.535%" y2="100%">
+      <stop stop-color="#DAE0EC" offset="0%"/>
+      <stop stop-color="#CFD7E6" offset="100%"/>
+    </linearGradient>
+    <circle id="a" cx="25" cy="16" r="3"/>
+    <filter id="d" width="200%" height="200%" x="-50%" y="-50%" filterUnits="objectBoundingBox">
+      <feOffset dy=".5" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation=".75" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.147843071 0" in="shadowBlurOuter1"/>
+    </filter>
+    <mask id="e" width="6" height="6" x="0" y="0" fill="white">
+      <use xlink:href="#a"/>
+    </mask>
+    <circle id="b" cx="16" cy="16" r="3"/>
+    <filter id="g" width="200%" height="200%" x="-50%" y="-50%" filterUnits="objectBoundingBox">
+      <feOffset dy=".5" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation=".75" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.147843071 0" in="shadowBlurOuter1"/>
+    </filter>
+    <mask id="h" width="6" height="6" x="0" y="0" fill="white">
+      <use xlink:href="#b"/>
+    </mask>
+    <circle id="c" cx="7" cy="16" r="3"/>
+    <filter id="i" width="200%" height="200%" x="-50%" y="-50%" filterUnits="objectBoundingBox">
+      <feOffset dy=".5" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation=".75" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.147843071 0" in="shadowBlurOuter1"/>
+    </filter>
+    <mask id="j" width="6" height="6" x="0" y="0" fill="white">
+      <use xlink:href="#c"/>
+    </mask>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <g opacity=".2">
+      <use fill="black" filter="url(#d)" xlink:href="#a"/>
+      <use fill="url(#f)" stroke="#000000" stroke-opacity=".1" mask="url(#e)" xlink:href="#a"/>
+    </g>
+    <use fill="black" filter="url(#g)" xlink:href="#b"/>
+    <use fill="url(#f)" stroke="#000000" stroke-opacity=".1" mask="url(#h)" xlink:href="#b"/>
+    <g opacity=".5">
+      <use fill="black" filter="url(#i)" xlink:href="#c"/>
+      <use fill="url(#f)" stroke="#000000" stroke-opacity=".1" mask="url(#j)" xlink:href="#c"/>
+    </g>
+  </g>
+</svg>
