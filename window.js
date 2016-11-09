@@ -19,7 +19,7 @@ function notifyTestResult(buildData, notificationIconPath) {
 
 function renderBuildTemplate(someData) {
   const buildTemplate = `
-  <li class="status--details" id="build-{{ number }}">
+  <li class="status--details" id="build-{{ number }}" onclick="shell.openExternal('{{ url }}');"">
     <div class="status--copy {{ status }}">
       <div class="state">
         <i class="icon icon-{{ status }}"></i>
