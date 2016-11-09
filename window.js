@@ -7,6 +7,7 @@ const AutoLaunch = require('auto-launch');
 function notifyTestResult(buildData, notificationIconPath) {
   const notification = new Notification(
     `Build ${buildData.number} ${buildData.status}`,{
+      body: `${buildData.commitMessage} (${buildData.commitSha})`,
       icon: notificationIconPath
     }
   );
