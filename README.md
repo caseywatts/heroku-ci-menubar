@@ -1,20 +1,19 @@
 # heroku-ci-menubar
 
-Install electron executable:
+### Setup
+```
+npm install -g electron-prebuilt
+npm install -g yarn
+yarn install
+```
 
-`npm install -g electron-prebuilt`
-
-Install dependencies
-
-`npm install -g yarn`
-
-`yarn install`
-
-Run the app:
+### Run the app
 
 `electron .`
 
 ### Building
 
-`npm run build-osx`
-`npm run copy-osx-build-to-applications`
+```
+npm run build-osx
+npm run copy-osx-build-to-applications
+```
