@@ -138,9 +138,12 @@ socket.on('connect', function(){
 socket.on('update', function(data){
   console.log('update');
   console.log(data);
-  // data.forEach((data) => {
-  dispatchEventForSomeData(parseBuildData(data));
-  // })
+  const parsedData = parseBuildData(data);
+  storage.get('contributor-email', (error, email) => {
+    if (parsedData.actorEmail !== email || email === undefined) {
+      dispatchEventForSomeData(parsedData);
+    }
+  })
 });
 
 socket.on('create', function(data){
