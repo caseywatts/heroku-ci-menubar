@@ -11,3 +11,8 @@ Install dependencies
 Run the app:
 
 `electron .`
+
+### Building
+
+`npm run build-osx`
+`npm run copy-osx-build-to-applications`

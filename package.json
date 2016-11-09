@@ -4,7 +4,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build-osx": "electron-packager . --platform='darwin' --out='releases' --overwrite=true --icon='icons/AppIcon/AppIcon.icns'"
+    "build-osx": "electron-packager . --platform='darwin' --out='releases' --overwrite=true --icon='icons/AppIcon/AppIcon.icns'",
+    "copy-osx-build-to-applications": "cp -r releases/heroku-ci-menubar-darwin-x64/heroku-ci-menubar.app /Applications"
   },
   "dependencies": {
     "electron-debug": "^1.1.0",
