@@ -138,7 +138,7 @@ socket.on('connect', function(){
 function dispatchEventForSomeDataIfEmailMatches(data) {
   const parsedData = parseBuildData(data);
   storage.get('contributor-email', (error, email) => {
-    if (parsedData.actorEmail === email || email === undefined) {
+    if (parsedData.actorEmail === email || email === undefined || email === null || email === "") {
       dispatchEventForSomeData(parsedData);
     }
   })
@@ -169,6 +169,7 @@ socket.on('error', function(err) {
 });
 
 ipcMain.on('reconnect', () => {
+  console.log('reconnect');
   connectToRooms();
 })
 
