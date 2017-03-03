@@ -6,13 +6,13 @@ npm install -g yarn
 yarn install
 ```
 
-### Run the app
+### Development - Run the app
 
 ```
 npm start
 ```
 
-### Building
+### Build & Install on OSX
 
 ```
 npm run build-osx
